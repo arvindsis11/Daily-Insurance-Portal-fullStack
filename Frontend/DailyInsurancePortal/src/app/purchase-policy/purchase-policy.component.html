@@ -1,0 +1,60 @@
+<nav class="navbar navbar-light bg-dark">
+    <div class="container-fluid">
+      <h1 style="color: aliceblue" class="navbar-brand">Policy Details</h1>
+      <div class="d-flex">
+        <button
+          style="margin-right: 16px"
+          class="btn btn-primary"
+          routerLink="/viewPolicy"
+        >
+          View Policy
+        </button>
+        <button routerLink="/home" class="btn btn-danger mz-2">Back</button>
+      </div>
+    </div>
+  </nav>
+  <div class="p-3"></div>
+  <div class="p-3"></div>
+  <div class="row col-lg-8 align-items-center m-auto p-0 card_cover"> 
+    <div
+    class="container card border border-info mb-3 mt-1"
+    style="width: 29rem;margin-top: 60px;"
+  >
+    <h2 class="mb-5">Purchase Your Daily Insurance Policy</h2>
+    <form [formGroup]="createPolicyForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <div class="form-group form-row">
+          <select formControlName="policy_name" class="custom-select">
+            <option selected>Policy name</option>
+            <option value="SBI Life Saral Pension">SBI Life Saral Pension</option>
+            <option value="ICICI Prudential Wealth Builder II">ICICI Prudential Wealth Builder II</option>
+            <option value="Bajaj Allianz Cash Secure">Bajaj Allianz Cash Secure</option>
+            <option value="SBI Life Shubh Nivesh">SBI Life Shubh Nivesh</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="col mt-3 mb-3">
+            <input type="text" formControlName = "policy_premium"
+              class="form-control"
+              id="inputAmount4"
+              placeholder="Premium"
+              required
+            />
+            <span class="text-danger" *ngIf="createPolicyForm.controls['policy_premium'].dirty && createPolicyForm.hasError('required','policy_premium')">*premium amount is required</span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-6">
+          <!-- <button class="btn btn-link" type="submit"></button> -->
+        </div>
+        <div class="card text-right col-md-6">
+          <button class="btn btn-primary" type="submit">Next</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  </div>
+  <div class="fixed-bottom">
+    <app-footer></app-footer>
+</div>

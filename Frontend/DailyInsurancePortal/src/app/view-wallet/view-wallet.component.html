@@ -1,0 +1,42 @@
+<nav class="navbar navbar-light bg-dark fixed-top">
+    <div class="container-fluid">
+        
+        <h1 style="color:aliceblue;" class="navbar-brand">View Wallet Balance</h1>
+        <div class="d-flex">
+            
+            <button routerLink="/addWalletBalance" class="btn btn-danger mz-2">Back</button>
+        </div>
+    </div>
+</nav>
+<div class="container">
+<h1>TRANSACATION DETAILS</h1>
+<div class="card bg-dark text-white text-center">
+  <img class="card-img rounded" style="height:200px;" src="/assets/ewallet3.jpg" alt="Card image">
+  <div class="card-img-overlay">
+    <h6 class="card-title">Your Current Wallet Balance</h6>
+    <!-- <button type="button" class="btn btn-info">{{current_balance}}</button> -->
+    <button type="button" class="btn btn-dark btn-lg">{{current_balance|currency:'INR':'symbol'}}</button>
+    <p class="card-text">Last updated 3 mins ago</p>
+  </div>
+</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Payment ID</th>
+          <th>MODE of Payment</th>
+          <th>Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let wallet of wallets">
+          <td>{{wallet.id}}</td>
+          <td>{{wallet.mode}}</td>
+          <td>{{wallet.amount|currency:'INR':'symbol'}}</td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+  <div class="fixed-bottom">
+    <app-footer></app-footer>
+</div>

@@ -1,0 +1,45 @@
+<nav class="navbar  navbar-light bg-dark">
+  <div class="container-fluid" style="width: 100%;">
+    <h1 style="color: aliceblue" class="navbar-brand">Daily Insurance</h1>
+    <div class="d-flex">
+      <div class="myDiv">
+        <!-- <div class="d-grid gap-2 d-md-block"></div> -->
+        <button
+          style="margin-right: 16px"
+          class="btn btn-success"
+          routerLink="/addWalletBalance"
+          [disabled]="!checkUserLogin.isUerLoggedIn()"
+        >
+          e-Wallet
+        </button>
+        <!-- fixes here for route guard -->
+        <button
+          style="margin-right: 16px"
+          class="btn btn-success"
+          routerLink="/purchasePolicy"
+          [disabled]="!checkUserLogin.isUerLoggedIn()"
+        >
+          Buy Policy
+        </button>
+        <button
+          style="margin-right: 20px"
+          class="btn btn-success btn-sm"
+          routerLink="/processClaim"
+          [disabled]="!checkUserLogin.isUerLoggedIn()"
+        >
+          Process Claim
+        </button>
+        <button
+          style="margin-right: 16px"
+          class="btn btn-success"
+          *ngIf="!checkUserLogin.isUerLoggedIn()"
+          routerLink="/login"
+        >
+          Login
+        </button>
+        <!-- *ngIf="checkUserLogin.isUerLoggedIn()" fix-->
+      </div>
+      <button *ngIf="checkUserLogin.isUerLoggedIn()" class="btn btn-danger mz-2" (click)="logout()">Logout</button>
+    </div>
+  </div>
+  </nav>

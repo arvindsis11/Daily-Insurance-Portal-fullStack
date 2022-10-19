@@ -1,0 +1,52 @@
+<nav class="navbar navbar-light bg-dark">
+    <div class="container-fluid">
+        
+        <h1 style="color:aliceblue;" class="navbar-brand">View Policy details</h1>
+        <div class="d-flex">
+            
+            <button  routerLink="/purchasePolicy" class="btn btn-danger mz-2">Back</button>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+<h1>TRANSACATION DETAILS</h1>
+<div class="card bg-dark text-white text-center">
+  <img class="card-img rounded" style="height:200px;" src="/assets/claim.jpg" alt="Card image">
+  <div class="card-img-overlay">
+    <h6 class="card-title">Your Total investment in Policy</h6>
+    <!-- <button type="button" class="btn btn-info">{{current_balance}}</button> -->
+    <button type="button" class="btn btn-dark btn-lg">{{current_balance|currency:'INR':'symbol'}}</button>
+    <p class="card-text">Last updated 3 mins ago</p>
+  </div>
+  <div class="alert alert-danger" *ngIf="error!=undefined">
+    <!-- fixme -->
+    {{error}}
+</div>
+</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Policy ID</th>
+          <th>Policy Name</th>
+          <th>Policy Premium</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let policy of policies">
+          <td>POL_{{policy.policy_id}}</td>
+          <td>{{policy.policy_name}}</td>
+          <td>{{policy.policy_premium|currency:'INR':'symbol'}}</td>
+          <td></td>
+        </tr>
+        <td>POL_1</td>
+        <td>Daily Accidental Coverage policy upto 10,000</td>
+        <td>100</td>
+        
+      </tbody>
+
+    </table>
+  </div>
+  <div class="fixed-bottom">
+    <app-footer></app-footer>
+</div>

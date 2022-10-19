@@ -1,0 +1,49 @@
+<nav class="navbar navbar-light bg-dark">
+    <div class="container-fluid">
+        
+        <h1 style="color:aliceblue;" class="navbar-brand">View Claim HIstory</h1>
+        <div class="d-flex">
+            
+            <button  routerLink="/processClaim" class="btn btn-danger mz-2">Back</button>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+<h1>CLAIM TRANSACATION DETAILS</h1>
+<div class="card bg-dark text-white text-center">
+  <img class="card-img rounded" style="height:200px;" src="/assets/claim.jpg" alt="Card image">
+  <div class="card-img-overlay">
+    <h6 class="card-title">Your Total Claim Amount</h6>
+    <!-- <button type="button" class="btn btn-info">{{current_balance}}</button> -->
+    <button type="button" class="btn btn-dark btn-lg">{{current_balance|currency:'INR':'symbol'}}</button>
+    <p class="card-text">Last updated 3 mins ago</p>
+  </div>
+  <div class="alert alert-danger" *ngIf="error!=undefined">
+    <!-- fixme -->
+    {{error}}
+</div>
+</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>POLICY ID</th>
+          <th>CLAIM AMOUNT</th>
+          <th>CLAIM STATUS</th>
+          <th>CLAIM DATE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let claim of claims">
+          <td>{{claim.user_id}}</td>
+          <td>{{claim.claim_amount|currency:'INR':'symbol'}}</td>
+          <td>{{claim.claim_status}}</td>
+          <td>{{claim.claim_dttm}}</td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+  <div class="fixed-bottom">
+    <app-footer></app-footer>
+</div>

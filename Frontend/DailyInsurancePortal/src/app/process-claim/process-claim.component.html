@@ -1,0 +1,74 @@
+<nav class="navbar navbar-light bg-dark fixed-top">
+    <div class="container-fluid">
+      <h1 style="color: aliceblue" class="navbar-brand">Process Claim</h1>
+      <div class="d-flex">
+        <button
+          style="margin-right: 16px"
+          class="btn btn-primary"
+          routerLink="/viewClaim"
+        >
+          View Claim
+        </button>
+        <button routerLink="/home" class="btn btn-danger mz-2">Back</button>
+      </div>
+    </div>
+  </nav>
+  <div class="p-3"></div>
+<div class="p-3"></div>
+<div class="row col-lg-8 align-items-center m-auto p-0 card_cover"> 
+  <div
+  class="container card border border-info mb-3 mt-1"
+  style="width: 29rem;margin-top: 60px;"
+>
+  <h2 class="mb-5">Raise a Claim Request</h2>
+  <form [formGroup]="createClaimForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <div class="form-group form-row">
+        <select formControlName="policy_id" class="form-control" class="custom-select">
+          <option selected>Policy name</option>
+          <option value="1">SBI Life Saral Pension</option>
+          <option value="2">ICICI Prudential Wealth Builder II</option>
+          <option value="3">Bajaj Allianz Cash Secure</option>
+          <option value="4">SBI Life Shubh Nivesh</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="col mt-3 mb-3">
+          <input
+            type="date"
+            formControlName="claim_dttm"
+            class="form-control"
+            id="startdate"
+            placeholder="Start date"
+            name="startdate"
+          required/>
+          <span class="text-danger" *ngIf="createClaimForm.controls['claim_dttm'].dirty && createClaimForm.hasError('required','amount')">*claim date is required</span>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col mt-3 mb-3">
+          <input
+            type="text"
+            formControlName="claim_amount"
+            class="form-control"
+            id="inputAmount4"
+            placeholder="Claim amount"
+            required
+          />
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-6">
+        <!-- <button class="btn btn-link" type="submit"></button> -->
+      </div>
+      <div class="card text-right col-md-6">
+        <button class="btn btn-primary" type="submit">Next</button>
+      </div>
+    </div>
+  </form>
+</div>
+</div>
+<div class="fixed-bottom">
+  <app-footer></app-footer>
+</div>
